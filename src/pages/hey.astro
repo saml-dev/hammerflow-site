@@ -1,18 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Key from '../components/Key.astro';
+import Keys from '../components/Keys.svelte';
 
 let keys = ['leader', 'a', 'v'];
-
-const interval = setTimeout(() => {
-  console.log('here');
-  keys = [];
-  keys = ['leader', 'a', 'm'];
-}, 2000);
 ---
 
 <Layout>
-  <div class='m-10 flex gap-x-3'>
-    {keys.map((key, idx) => <Key idx={idx}>{key}</Key>)}
-  </div>
+  <Keys client:load />
 </Layout>
