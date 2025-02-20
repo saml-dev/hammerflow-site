@@ -61,7 +61,8 @@
       <span
         in:fly={{ y: -2, duration: 100, delay: (currentKeys.length + 1) * 150 }}
         out:fade={{ duration: 100 }}
-        class="text-4xl font-bold">{currentAction?.label}</span
+        style="font-size: {currentAction.fontSize || '2rem'};"
+        class="font-bold line-clamp-1">{currentAction?.label}</span
       >
     {/if}
   </div>
