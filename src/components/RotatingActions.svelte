@@ -30,6 +30,8 @@
     }, 6000);
     return () => clearInterval(interval);
   });
+
+  function onKeyClick() {}
 </script>
 
 <div class="flex items-center justify-center gap-2 mt-12">
