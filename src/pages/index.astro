@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import RotatingActions from '../components/RotatingActions.svelte';
 import background from '../assets/bg.jpg';
 import vscodeLogo from '../assets/vscode.svg';
+import github from '../assets/github.svg';
 
 let actions: [string, KeyBindingAction][] = [
   [
@@ -25,7 +26,7 @@ let actions: [string, KeyBindingAction][] = [
     {
       action: 'Open',
       label: 'https://reddit.com',
-      fontSize: '1.4rem',
+      fontSize: '1.6rem',
     },
   ],
   [
@@ -39,7 +40,37 @@ let actions: [string, KeyBindingAction][] = [
     'leader r e',
     {
       action: 'Raycast',
-      label: 'Emoji picker',
+      label: '🤪 Emoji picker',
+    },
+  ],
+  [
+    'leader w h',
+    {
+      action: 'Window',
+      label: 'Left half',
+    },
+  ],
+  [
+    'leader r c',
+    {
+      action: 'Raycast',
+      label: '🎉 Confetti',
+    },
+  ],
+  [
+    'leader l m g',
+    {
+      action: 'Open',
+      icon: github.src,
+      label: 'https://github.com/saml-dev',
+      fontSize: '1.1rem',
+    },
+  ],
+  [
+    'leader w c',
+    {
+      action: 'Window',
+      label: 'Center half',
     },
   ],
 ];

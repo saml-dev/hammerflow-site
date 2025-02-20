@@ -33,7 +33,7 @@
 </script>
 
 <div class="flex items-center justify-center gap-2 mt-12">
-  <div class="w-50 flex justify-end">
+  <div class="w-60 flex justify-end">
     <Keys keys={currentKeys} />
   </div>
   <div
@@ -53,7 +53,7 @@
     {/if}
   </div>
   <div
-    class="bg-white rounded-lg p-2 w-80 h-36 shadow flex items-center justify-center gap-2 relative"
+    class="bg-white rounded-lg p-2 w-80 h-36 shadow flex items-center justify-center gap-3 relative"
   >
     {#if currentAction?.action}
       <p
@@ -67,7 +67,7 @@
     {#if currentAction?.icon}
       <img
         src={currentAction.icon}
-        class="size-8"
+        class="size-10"
         alt="VS Code Logo"
         in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
         out:fade
@@ -78,7 +78,7 @@
         in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
         out:fade
         style="font-size: {currentAction.fontSize || '2.25rem'};"
-        class="font-bold line-clamp-1">{currentAction?.label}</span
+        class="font-semibold line-clamp-1">{currentAction?.label}</span
       >
     {/if}
   </div>
