@@ -5,9 +5,8 @@
 </script>
 
 <kbd
-  class="px-3 py-2 text-sm font-semibold transition-all text-gray-900 bg-white border border-gray-200 rounded-lg"
-  style="--motion-delay: {idx * 250}ms;"
-  in:fly={{ y: -2, duration: 100, delay: idx * 150 }}
+  class="px-3 py-2 text-sm font-semibold transition-all text-gray-900 bg-white border border-gray-200 rounded-lg select-none"
+  in:fly={{ y: -4, duration: 200, delay: idx * 110 }}
   out:fade={{ duration: 150 }}
 >
   {@render children()}
@@ -15,17 +14,17 @@
 
 <style>
   kbd {
-    margin-top: 1px;
+    margin-top: 2px;
     margin-bottom: 3px;
     box-shadow: 0px 3px 0px 0px #00000024;
 
     &:hover {
       margin-top: 0px;
-      margin-bottom: 4px;
-      box-shadow: 0px 4px 0px 0px #00000024;
+      margin-bottom: 5px;
+      box-shadow: 0px 5px 0px 0px #00000024;
     }
     &:active {
-      margin-top: 4px;
+      margin-top: 5px;
       margin-bottom: 0px;
       box-shadow: 0px 3px 0px 0px #00000000;
     }
