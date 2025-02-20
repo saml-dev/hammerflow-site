@@ -2,10 +2,14 @@
   import { tick } from 'svelte';
   import Key from './Key.svelte';
   let keys = [
-    ['leader', 'a', 'm'],
     ['leader', 't'],
+    ['leader', 'v'],
+    ['leader', 'a', 'm'],
+    ['leader', 'l', 'r'],
+    ['leader', 'l', 'b'],
+    ['leader', 'r', 'e'],
   ];
-  let idx = $state(0);
+  let idx = $state(Math.floor(Math.random() * keys.length));
   let currentKeys = $derived(idx !== undefined ? keys[idx] : []);
 
   async function sleep(ms) {
@@ -19,7 +23,7 @@
       await tick();
       await sleep(500);
       idx = (prev + 1) % keys.length;
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   });
 </script>
