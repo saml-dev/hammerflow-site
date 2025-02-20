@@ -70,7 +70,7 @@
       <img
         src={currentAction.icon}
         class="size-10"
-        alt="VS Code Logo"
+        alt={currentAction?.label}
         in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
         out:fade
       />
@@ -80,7 +80,7 @@
         in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
         out:fade
         style="font-size: {currentAction.fontSize || '2.25rem'};"
-        class="font-semibold line-clamp-1">{currentAction?.label}</span
+        class="font-medium line-clamp-1">{currentAction?.label}</span
       >
     {/if}
   </div>
