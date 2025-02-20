@@ -1,35 +1,29 @@
-<script>
-  import { tick } from 'svelte';
+<script lang="ts">
   import Key from './Key.svelte';
-  let keys = [
-    ['leader', 't'],
-    ['leader', 'v'],
-    ['leader', 'a', 'm'],
-    ['leader', 'l', 'r'],
-    ['leader', 'l', 'b'],
-    ['leader', 'r', 'e'],
-  ];
-  let idx = $state(Math.floor(Math.random() * keys.length));
-  let currentKeys = $derived(idx !== undefined ? keys[idx] : []);
 
-  async function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
+  let { keys }: { keys: string[] } = $props();
 
-  $effect(() => {
-    let interval = setInterval(async () => {
-      let prev = idx;
-      idx = undefined;
-      await tick();
-      await sleep(500);
-      idx = (prev + 1) % keys.length;
-    }, 4000);
-    return () => clearInterval(interval);
-  });
+  // let idx: number | undefined = $state(Math.floor(Math.random() * keys.length));
+  // let currentKeys = $derived(idx !== undefined ? keys[idx][0].split(' ') : []);
+
+  // async function sleep(ms: number) {
+  //   return new Promise((resolve) => setTimeout(resolve, ms));
+  // }
+
+  // $effect(() => {
+  //   let interval = setInterval(async () => {
+  //     let prev = idx;
+  //     idx = undefined;
+  //     await tick();
+  //     await sleep(500);
+  //     idx = ((prev || 0) + 1) % keys.length;
+  //   }, 4000);
+  //   return () => clearInterval(interval);
+  // });
 </script>
 
-<div class="m-10 flex gap-x-3">
-  {#each currentKeys as key, i}
+<div class="flex gap-x-3">
+  {#each keys as key, i}
     <Key idx={i}>{key}</Key>
   {/each}
 </div>

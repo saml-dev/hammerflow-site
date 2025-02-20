@@ -1,17 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Keys from '../components/Keys.svelte';
+import RotatingActions from '../components/RotatingActions.svelte';
 import background from '../assets/bg.jpg';
+import vscodeLogo from '../assets/vscode.svg';
+
+let actions: [string, KeyBindingAction][] = [
+  [
+    'leader v',
+    {
+      icon: vscodeLogo.src,
+      action: 'Launch',
+      label: 'VS Code',
+    },
+  ],
+  [
+    'leader t',
+    {
+      action: 'Launch',
+      label: 'Terminal',
+    },
+  ],
+  [
+    'leader a m',
+    {
+      action: 'Launch',
+      label: 'Messages',
+    },
+  ],
+  [
+    'leader l r',
+    {
+      action: 'Open',
+      label: 'https://reddit.com',
+    },
+  ],
+  [
+    'leader l b',
+    {
+      action: 'Open',
+      label: 'https://bsky.app',
+    },
+  ],
+  [
+    'leader r e',
+    {
+      action: 'Raycast',
+      label: 'Emoji picker',
+    },
+  ],
+];
 ---
 
 <Layout>
-  <img
-    id='background'
-    src={background.src}
-    alt=''
-    fetchpriority='high'
-  />
-  <Keys client:load />
+  <div class='flex flex-col items-center mt-25 max-w-5xl mx-auto'>
+    <img
+      id='background'
+      src={background.src}
+      alt=''
+      fetchpriority='high'
+    />
+    <h1 class='text-balance text-center text-6xl font-bold'>
+      The most productive way to use your Mac
+    </h1>
+    <div class='flex items-center justify-center gap-2 mt-12'>
+      <RotatingActions
+        client:load
+        {actions}
+      />
+    </div>
+  </div>
 </Layout>
 
 <style>
