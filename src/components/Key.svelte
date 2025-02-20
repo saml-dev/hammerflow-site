@@ -5,9 +5,9 @@
 </script>
 
 <kbd
-  class="px-3 py-2 text-sm font-semibold transition-all text-gray-900 bg-white border border-gray-200 rounded-lg select-none"
+  class="px-5 py-4 font-semibold transition-all text-gray-900 bg-white border border-gray-200 rounded-lg select-none"
   in:fly={{ y: -4, duration: 200, delay: idx * 110 }}
-  out:fade={{ duration: 150 }}
+  out:fade
 >
   {@render children()}
 </kbd>
@@ -26,7 +26,7 @@
     &:active {
       margin-top: 5px;
       margin-bottom: 0px;
-      box-shadow: 0px 3px 0px 0px #00000000;
+      box-shadow: 0px 0px 0px 0px #00000000;
     }
   }
 </style>

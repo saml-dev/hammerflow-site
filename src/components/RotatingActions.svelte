@@ -2,7 +2,7 @@
   import { tick } from 'svelte';
   import Keys from './Keys.svelte';
   import { fade, fly } from 'svelte/transition';
-  import { linear } from 'svelte/easing';
+  import { quartOut } from 'svelte/easing';
 
   let { actions }: { actions: [string, KeyBindingAction][] } = $props();
 
@@ -25,7 +25,7 @@
       let prev = idx;
       idx = undefined;
       await tick();
-      await sleep(500);
+      await sleep(700);
       idx = ((prev || 0) + 1) % actions.length;
     }, 6000);
     return () => clearInterval(interval);
@@ -45,6 +45,7 @@
           x: -145,
           opacity: 1,
           duration: 1000,
+          easing: quartOut,
           delay: currentKeys.length * 110,
         }}
         class="translate-x-26 bg-green-400/50 size-3 blur-xs rounded-full"
@@ -52,13 +53,13 @@
     {/if}
   </div>
   <div
-    class="bg-white rounded-lg p-2 w-70 h-28 shadow flex items-center justify-center gap-2 relative"
+    class="bg-white rounded-lg p-2 w-80 h-36 shadow flex items-center justify-center gap-2 relative"
   >
     {#if currentAction?.action}
       <p
-        in:fade={{ duration: 100, delay: currentKeys.length * 110 + 350 }}
-        out:fade={{ duration: 100 }}
-        class="text-xs text-gray-600 absolute top-2 left-2"
+        in:fly={{ y: -3, duration: 200, delay: currentKeys.length * 110 + 350 }}
+        out:fade
+        class="text-sm text-gray-600 absolute top-1.5 left-3"
       >
         {currentAction?.action}
       </p>
@@ -68,15 +69,15 @@
         src={currentAction.icon}
         class="size-8"
         alt="VS Code Logo"
-        in:fade={{ duration: 100, delay: currentKeys.length * 110 + 350 }}
-        out:fade={{ duration: 100 }}
+        in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
+        out:fade
       />
     {/if}
     {#if currentAction?.label}
       <span
-        in:fly={{ y: -2, duration: 100, delay: currentKeys.length * 110 + 400 }}
-        out:fade={{ duration: 100 }}
-        style="font-size: {currentAction.fontSize || '2rem'};"
+        in:fly={{ y: -6, delay: currentKeys.length * 110 + 650 }}
+        out:fade
+        style="font-size: {currentAction.fontSize || '2.25rem'};"
         class="font-bold line-clamp-1">{currentAction?.label}</span
       >
     {/if}
