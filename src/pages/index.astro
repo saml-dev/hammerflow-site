@@ -87,7 +87,7 @@ let actions: [string, KeyBindingAction][] = [
 
 <Layout>
   <div
-    class='flex flex-col items-center mt-10 mb-40 md:mt-25 max-w-5xl mx-auto'
+    class='flex flex-col items-center mt-10 mb-40 md:mt-25 max-w-6xl mx-auto'
   >
     <img
       id='background'
@@ -105,10 +105,10 @@ let actions: [string, KeyBindingAction][] = [
       />
     </div>
     <div class='mt-22 max-w-9/10'>
-      <!-- TODO: "text-based configuration with live reloading" code sample -->
-      <h2 class='text-2xl text-balance'>
+      <h2 class='text-3xl text-balance -ml-1'>
         Text based configuration with live reloading.
       </h2>
+      <p class='text-lg text-gray-600'>Iterate as fast as you can type.</p>
       <Code
         lang='toml'
         code={tomlSample}
