@@ -27,15 +27,15 @@
       await tick();
       await sleep(700);
       idx = ((prev || 0) + 1) % actions.length;
-    }, 6000);
+    }, 4000);
     return () => clearInterval(interval);
   });
-
-  function onKeyClick() {}
 </script>
 
-<div class="flex items-center justify-center gap-2 mt-12">
-  <div class="w-60 flex justify-end">
+<div
+  class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2"
+>
+  <div class=" md:w-60 h-15 flex justify-center md:justify-end">
     <Keys keys={currentKeys} />
   </div>
   <div
@@ -44,7 +44,7 @@
     {#if currentAction}
       <div
         in:fly={{
-          x: -145,
+          x: -120,
           opacity: 1,
           duration: 1000,
           easing: quartOut,
