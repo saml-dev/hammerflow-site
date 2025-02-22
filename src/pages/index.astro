@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RotatingActions from '../components/RotatingActions.svelte';
+import { Code } from 'astro:components';
 
 import background from '../assets/bg.jpg';
 import vscodeLogo from '../assets/vscode.svg';
 import github from '../assets/github.svg';
 import window from '../assets/window.svg';
 import terminal from '../assets/terminal.png';
+import { tomlSample } from '../lib/strings';
 
 let actions: [string, KeyBindingAction][] = [
   [
@@ -84,7 +86,9 @@ let actions: [string, KeyBindingAction][] = [
 ---
 
 <Layout>
-  <div class='flex flex-col items-center mt-10 md:mt-25 max-w-5xl mx-auto'>
+  <div
+    class='flex flex-col items-center mt-10 mb-40 md:mt-25 max-w-5xl mx-auto'
+  >
     <img
       id='background'
       src={background.src}
@@ -94,14 +98,22 @@ let actions: [string, KeyBindingAction][] = [
     <h1 class='text-balance text-center text-4xl md:text-6xl font-bold'>
       The most productive way to navigate your Mac
     </h1>
-    <div class='mt-8 md:mt-18'>
+    <div class='mt-12 md:mt-18'>
       <RotatingActions
         client:load
         {actions}
       />
     </div>
-    <div>
+    <div class='mt-22 max-w-9/10'>
       <!-- TODO: "text-based configuration with live reloading" code sample -->
+      <h2 class='text-2xl text-balance'>
+        Text based configuration with live reloading.
+      </h2>
+      <Code
+        lang='toml'
+        code={tomlSample}
+        class='rounded-lg p-4 mt-2 text-sm md:text-base overflow-x-scroll'
+      />
     </div>
     <div>
       <!-- TODO: quick start, one tab for using hammerspoon (test this workflow locally), one tab for installing hammerspoon -->
