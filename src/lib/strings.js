@@ -29,7 +29,7 @@ g = ["https://github.com/saml-dev", "my github"]
 b = ["https://bsky.app/profile/saml.dev", "my bluesky"]
 t = ["https://twitter.com/saml_dev", "my twitter"]
 
-# raycast deep links are supported toc
+# raycast deep links are supported
 [r]
 label = "[raycast]"
 c = ["raycast://extensions/raycast/raycast/confetti", "confetti"]
