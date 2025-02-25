@@ -13,7 +13,7 @@
         class={{
           'py-3 rounded-tl-lg': true,
           'border-b border-b-gray-200': !firstTab,
-          'bg-soft-yellow': firstTab,
+          'bg-soft-yellow/70 bg-blend-multiply': firstTab,
         }}
         onclick={() => (firstTab = true)}
       >
@@ -23,12 +23,12 @@
         class={{
           'py-3 rounded-tr-lg': true,
           'border-b border-b-gray-200': firstTab,
-          'bg-soft-yellow': !firstTab,
+          'bg-soft-yellow/70 bg-blend-multiply': !firstTab,
         }}
         onclick={() => (firstTab = false)}>I already use hammerspoon</button
       >
     </div>
-    <div class="p-3 pt-8 bg-soft-yellow rounded-b-lg">
+    <div class="p-3 pt-8 bg-soft-yellow/70 bg-blend-multiply rounded-b-lg">
       {#if firstTab}
         {@render first()}
       {:else}
