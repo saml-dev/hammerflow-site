@@ -4,11 +4,12 @@
   import { fade, fly } from 'svelte/transition';
   import { quartOut } from 'svelte/easing';
 
-  let { actions }: { actions: [string, KeyBindingAction][] } = $props();
+  let {
+    actions,
+    startIdx,
+  }: { actions: [string, KeyBindingAction][]; startIdx: number } = $props();
 
-  let idx: number | undefined = $state(
-    Math.floor(Math.random() * actions.length),
-  );
+  let idx: number | undefined = $state(startIdx);
   let currentKeys = $derived(
     idx !== undefined ? actions[idx][0].split(' ') : [],
   );
@@ -55,7 +56,7 @@
     {/if}
   </div>
   <div
-    class="bg-white rounded-lg p-2 w-80 h-36 shadow flex items-center justify-center gap-3 relative"
+    class="bg-white rounded-lg p-2 w-80 max-w-[96vw] h-36 shadow flex items-center justify-center gap-3 relative"
   >
     {#if currentAction?.action}
       <p

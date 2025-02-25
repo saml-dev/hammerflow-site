@@ -1,0 +1,33 @@
+---
+import { Code } from 'astro:components';
+import Layout from '../layouts/Layout.astro';
+
+const resp = await fetch(
+  'https://raw.githubusercontent.com/saml-dev/hammerspoon-config/refs/heads/main/sample.toml',
+);
+const sampleToml = (await resp.text()).split('\n').slice(10).join('\n');
+---
+
+<Layout>
+  <div class='mt-10 flex flex-col items-center'>
+    <div class='max-w-[calc(100vw-2rem)]'>
+      <h2 class='text-3xl font-medium text-balance'>
+        Full sample configuration.
+      </h2>
+      <p class='text-xl text-gray-600'>
+        Mirrored from <a
+          class='underline hover:decoration-2'
+          href='https://github.com/saml-dev/hammerflow/blob/main/sample.toml'
+          target='_blank'
+          >sample.toml</a
+        > on Github
+      </p>
+      <Code
+        theme='dark-plus'
+        lang='toml'
+        code={sampleToml}
+        class='rounded-lg p-4 mt-5 text-sm md:text-base overflow-x-scroll'
+      />
+    </div>
+  </div>
+</Layout>

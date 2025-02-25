@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import background from '../assets/bg.jpg';
 ---
 
 <!doctype html>
@@ -21,13 +22,29 @@ import '../styles/global.css';
     />
     <title>HammerFlow</title>
   </head>
-  <body>
+  <body class='max-w-5xl mb-40 px-4 md:px-8 mx-auto'>
     <slot />
+    <img
+      id='background'
+      src={background.src}
+      alt=''
+      fetchpriority='high'
+    />
   </body>
 </html>
 
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(100px);
   }
 </style>
