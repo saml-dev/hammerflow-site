@@ -5,7 +5,7 @@ h2 {
 }
 
 pre {
-  @apply rounded-lg p-4 mt-2 text-sm md:text-base overflow-x-scroll;
+  @apply rounded-lg p-4 text-sm md:text-base overflow-x-scroll;
 }
 
 code:not(pre *) {
@@ -29,4 +29,8 @@ a[target='_blank']::after {
   width: 1em;
   height: 1em;
   margin-left: 4px;
+}
+
+a {
+  @apply underline hover:decoration-2!;
 }

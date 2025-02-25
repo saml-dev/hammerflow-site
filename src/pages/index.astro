@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import RotatingActions from '../components/RotatingActions.svelte';
 import QuickStart from '../components/QuickStart.svelte';
+import Tagline from '../components/Tagline.svelte';
 import Fun from '../components/Fun.svelte';
 import { Code } from 'astro:components';
 import { shortExampleToml } from '../lib/constants';
@@ -93,7 +94,7 @@ const rand = Math.floor(Math.random() * actions.length);
 <Layout>
   <div class='mt-10 md:mt-25 flex flex-col items-center'>
     <h1
-      class='text-balance text-center leading-tight text-4xl md:text-6xl font-bold'
+      class='text-balance group text-center leading-tight text-4xl md:text-6xl font-bold'
     >
       The most
       <span class='relative'
@@ -112,7 +113,7 @@ const rand = Math.floor(Math.random() * actions.length);
 
     <div class='mt-10 md:mt-22 w-full'>
       <h2>Easy toml configuration with live reloading.</h2>
-      <div class='relative'>
+      <div class='relative mt-3'>
         <Code
           theme='dark-plus'
           lang='toml'
@@ -122,19 +123,27 @@ const rand = Math.floor(Math.random() * actions.length);
         <div
           class='absolute text-sm md:text-base top-0.25 right-0.25 bg-yellow-50 border p-1 md:p-2 rounded-bl-lg rounded-tr-lg flex items-center gap-1 underline hover:decoration-2'
         >
-          <a href='/docs'> See the full example</a>
+          <a href='/docs'>See the full example &rarr;</a>
         </div>
       </div>
     </div>
     <div class='w-full mt-24 text-lg'>
       <QuickStart client:load>
-        <div slot='first'>
-          <p>1. Clone this repo to the default Hammerspoon config location:</p>
-          <Code
-            lang='bash'
-            code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon'
-          />
-          <p class='mt-3'>
+        <div
+          slot='first'
+          class='flex flex-col gap-y-4'
+        >
+          <div>
+            <p>
+              1. Clone this repo to the default Hammerspoon config location:
+            </p>
+            <Code
+              lang='bash'
+              code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon'
+              class='mt-1'
+            />
+          </div>
+          <p>
             2. Install <a
               target='_blank'
               href='https://www.hammerspoon.org/'
@@ -142,13 +151,13 @@ const rand = Math.floor(Math.random() * actions.length);
               >Hammerspoon</a
             >
           </p>
-          <p class='mt-3'>
+          <p>
             3. Explore <Code
               code='sample.toml'
               inline
             /> to see what you can do and try out some of the default actions.
           </p>
-          <p class='mt-3'>
+          <p>
             4. Create <Code
               code='home.toml'
               inline
@@ -158,32 +167,42 @@ const rand = Math.floor(Math.random() * actions.length);
             /> and personalize to your hearts content!
           </p>
         </div>
-        <div slot='second'>
-          <p>
-            1. Clone this repo to a subdirectory in your hammerspoon config:
-          </p>
-          <Code
-            lang='bash'
-            code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon/hammerflow'
-          />
-          <p class='mt-3'>
-            2. Add these two lines to the top of your <Code
-              code='init.lua'
-              inline
-            />:
-          </p>
-          <Code
-            lang='lua'
-            code=`package.path = package.path .. ";" .. hs.configdir .. "/hammerflow/Spoons/?.spoon/init.lua"
+        <div
+          slot='second'
+          class='flex flex-col gap-y-4'
+        >
+          <div>
+            <p>
+              1. Clone this repo to a subdirectory in your hammerspoon config:
+            </p>
+            <Code
+              lang='bash'
+              code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon/hammerflow'
+              class='mt-1'
+            />
+          </div>
+          <div class='mt-1'>
+            <p>
+              2. Add these lines to the top of your <Code
+                code='init.lua'
+                inline
+              />:
+            </p>
+            <Code
+              lang='lua'
+              code=`-- allows hammerspoon to find Spoons inside hammerflow
+package.path = package.path .. ";" .. hs.configdir .. "/hammerflow/Spoons/?.spoon/init.lua"
 require('hammerflow/init')`
-          />
-          <p class='mt-3'>
+              class='mt-1'
+            />
+          </div>
+          <p>
             3. Explore <Code
               code='sample.toml'
               inline
             /> to see what you can do and try out some of the default actions.
           </p>
-          <p class='mt-3'>
+          <p>
             4. Create <Code
               code='home.toml'
               inline
