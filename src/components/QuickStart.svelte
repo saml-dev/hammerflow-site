@@ -5,13 +5,15 @@
 
 <div>
   <h2>Quick Start</h2>
-  <div class="mt-3 bg-white rounded-lg shadow-sm border border-gray-800/10">
+  <div
+    class="mt-3 bg-gray-800/5 backdrop-blur-3xl rounded-lg shadow-sm border border-gray-800/10"
+  >
     <div class="w-full grid grid-cols-2">
       <button
         class={{
           'py-3 rounded-tl-lg': true,
-          'bg-gray-100 text-gray-400 border-b border-b-gray-200': !firstTab,
-          ' ': firstTab,
+          'border-b border-b-gray-200': !firstTab,
+          'bg-soft-yellow': firstTab,
         }}
         onclick={() => (firstTab = true)}
       >
@@ -20,12 +22,13 @@
       <button
         class={{
           'py-3 rounded-tr-lg': true,
-          'bg-gray-100 text-gray-400 border-b border-b-gray-200': firstTab,
+          'border-b border-b-gray-200': firstTab,
+          'bg-soft-yellow': !firstTab,
         }}
         onclick={() => (firstTab = false)}>I already use hammerspoon</button
       >
     </div>
-    <div class="p-3">
+    <div class="p-3 pt-8 bg-soft-yellow rounded-b-lg">
       {#if firstTab}
         {@render first()}
       {:else}

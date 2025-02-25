@@ -29,7 +29,7 @@
 <span
   in:tapeSlap
   aria-label="and fun"
-  class="fun-overlay group-hover:opacity-0! rounded tracking-widest transition-all whitespace-nowrap px-[.7em] py-[.1em]"
+  class="fun-overlay group-hover:opacity-0! -rotate-[4deg] md:-rotate-[7deg] -translate-1/2 top-1/2 md:top-[40%] rounded tracking-widest transition-all whitespace-nowrap px-[.7em] md:py-[.1em]"
 >
   fun 🎉
 </span>
@@ -37,10 +37,9 @@
 <style lang="postcss">
   .fun-overlay {
     position: absolute;
-    top: 35%;
+    /* top: 35%; */
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-7deg);
-    background-color: #c1f8d3;
+    background-color: hsl(147, 65%, 85%);
     opacity: 1;
     font-family: 'Comic Sans MS', sans-serif;
     font-size: 0.9em;
