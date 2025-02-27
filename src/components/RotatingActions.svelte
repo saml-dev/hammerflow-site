@@ -21,15 +21,19 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  async function nextAction() {
+    let prev = idx;
+    idx = undefined;
+    await tick();
+    await sleep(700);
+    idx = ((prev || 0) + 1) % actions.length;
+    setTimeout(nextAction, 4000);
+  }
+
   $effect(() => {
-    let interval = setInterval(async () => {
-      let prev = idx;
-      idx = undefined;
-      await tick();
-      await sleep(700);
-      idx = ((prev || 0) + 1) % actions.length;
-    }, 4000);
-    return () => clearInterval(interval);
+    // first render has shorter timeout because it doesn't animate in.
+    // with the same duration it feels much longer than the others.
+    setTimeout(nextAction, 3000);
   });
 </script>
 
