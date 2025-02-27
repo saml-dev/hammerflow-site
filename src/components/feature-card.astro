@@ -1,0 +1,12 @@
+<div class='bg-white p-4 md:p-6 rounded-lg shadow'>
+  <h3 class='-m-0.5 flex items-center gap-1 text-3xl font-medium'>
+    <img
+      src={Astro.props.iconSrc}
+      alt='shield'
+      class='pt-0.5 size-[1.1em]'
+    />{Astro.props.title}
+  </h3>
+  <p>
+    <slot />
+  </p>
+</div>

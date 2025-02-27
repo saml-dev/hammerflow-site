@@ -2,8 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import RotatingActions from '../components/RotatingActions.svelte';
 import QuickStart from '../components/QuickStart.svelte';
-import Tagline from '../components/Tagline.svelte';
-import Fun from '../components/Fun.svelte';
+import FeatureCards from '../components/feature-cards.astro';
 import { Code } from 'astro:components';
 import { shortExampleToml } from '../lib/constants';
 
@@ -111,15 +110,7 @@ const rand = Math.floor(Math.random() * actions.length);
       />
     </div>
     <div class='mt-10 md:mt-25 w-full'>
-      <!--  -->
-      <h2>Battle Tested</h2>
-      <p class='mt-2 text-xl text-balance'>
-        Under the hood, Hammerflow relies on <a
-          href='https://www.hammerspoon.org/'
-          target='_blank'
-          >Hammerspoon</a
-        >, a well-established and powerful Mac productivity app.
-      </p>
+      <FeatureCards />
     </div>
     <div class='mt-10 md:mt-14 w-full'>
       <h2>Easy toml configuration with live reloading.</h2>
