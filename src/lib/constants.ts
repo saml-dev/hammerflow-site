@@ -3,6 +3,7 @@ export const shortExampleToml = `leader_key = "f18"
 t = "Terminal"
 b = "Safari"
 v = ["Visual Studio Code", "VS Code"] 
+s = ["shortcut:cmd alt shift 4", "screenshot"]
 
 [l] 
 label = "[links]" 
