@@ -5,7 +5,7 @@
 }
 
 h2 {
-  @apply text-3xl font-medium text-balance;
+  @apply text-xl md:text-2xl font-medium md:text-balance;
 }
 
 pre {
