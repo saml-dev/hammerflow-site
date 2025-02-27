@@ -11,6 +11,7 @@ import github from '../assets/github.svg';
 import window from '../assets/window.svg';
 import terminal from '../assets/terminal.png';
 import globe from '../assets/globe.svg';
+import screenshot from '../assets/screenshot.svg';
 
 let actions: [string, KeyBindingAction][] = [
   [
@@ -19,6 +20,13 @@ let actions: [string, KeyBindingAction][] = [
       icon: vscodeLogo.src,
       action: 'Launch',
       label: 'VS Code',
+    },
+  ],
+  [
+    'leader s',
+    {
+      action: 'Keyboard Shortcut',
+      label: '⌘ ⌃ ⇧ 4',
     },
   ],
   [
