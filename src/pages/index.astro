@@ -11,7 +11,6 @@ import github from '../assets/github.svg';
 import window from '../assets/window.svg';
 import terminal from '../assets/terminal.png';
 import globe from '../assets/globe.svg';
-import screenshot from '../assets/screenshot.svg';
 
 let actions: [string, KeyBindingAction][] = [
   [
@@ -146,6 +145,7 @@ const rand = Math.floor(Math.random() * actions.length);
               1. Clone this repo to the default Hammerspoon config location:
             </p>
             <Code
+              theme='dark-plus'
               lang='bash'
               code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon'
               class='mt-1'
@@ -165,24 +165,29 @@ const rand = Math.floor(Math.random() * actions.length);
               target='_blank'
               >Karabiner Elements</a
             > to remap <Code
+              theme='dark-plus'
               code='Right Command'
               inline
             /> to <Code
+              theme='dark-plus'
               code='f18'
               inline
             /> for a dedicated leader key.
           </p>
           <p>
             4. Explore <Code
+              theme='dark-plus'
               code='sample.toml'
               inline
             /> to see what you can do and try out some of the default actions.
           </p>
           <p>
             5. Create <Code
+              theme='dark-plus'
               code='home.toml'
               inline
             /> or <Code
+              theme='dark-plus'
               code='work.toml'
               inline
             /> and personalize to your hearts content!
@@ -197,6 +202,7 @@ const rand = Math.floor(Math.random() * actions.length);
               1. Clone this repo to a subdirectory in your hammerspoon config:
             </p>
             <Code
+              theme='dark-plus'
               lang='bash'
               code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon/hammerflow'
               class='mt-1'
@@ -205,11 +211,13 @@ const rand = Math.floor(Math.random() * actions.length);
           <div class='mt-1'>
             <p>
               2. Add these lines to the top of your <Code
+                theme='dark-plus'
                 code='init.lua'
                 inline
               />:
             </p>
             <Code
+              theme='dark-plus'
               lang='lua'
               code=`-- allows hammerspoon to find Spoons inside hammerflow
 package.path = package.path .. ";" .. hs.configdir .. "/hammerflow/Spoons/?.spoon/init.lua"
@@ -223,24 +231,29 @@ require('hammerflow/init')`
               target='_blank'
               >Karabiner Elements</a
             > to remap <Code
+              theme='dark-plus'
               code='Right Command'
               inline
             /> to <Code
+              theme='dark-plus'
               code='f18'
               inline
             /> for a dedicated leader key.
           </p>
           <p>
             4. Explore <Code
+              theme='dark-plus'
               code='sample.toml'
               inline
             /> to see what you can do and try out some of the default actions.
           </p>
           <p>
             5. Create <Code
+              theme='dark-plus'
               code='home.toml'
               inline
             /> or <Code
+              theme='dark-plus'
               code='work.toml'
               inline
             /> and personalize to your hearts content!
