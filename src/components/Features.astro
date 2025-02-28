@@ -1,0 +1,25 @@
+---
+import shield from '../assets/shield.svg';
+import layers from '../assets/layers.svg';
+import Feature from './Feature.astro';
+---
+
+<div class='grid grid-cols-1 gap-8 md:grid-cols-2'>
+  <Feature
+    iconSrc={shield.src}
+    title='Battle tested'
+  >
+    Under the hood, Hammerflow relies on <a
+      href='https://www.hammerspoon.org/'
+      target='_blank'
+      >Hammerspoon</a
+    >, a well-established and powerful Mac productivity app.
+  </Feature>
+  <Feature
+    iconSrc={layers.src}
+    title='shadcn for shortcuts'
+  >
+    Easily configure all of your shortcuts from a single text file. If you want
+    more control, just open the code and change it however you like.
+  </Feature>
+</div>

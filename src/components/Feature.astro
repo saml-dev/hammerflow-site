@@ -1,0 +1,15 @@
+<div class='grid grid-cols-[max-content_1fr] gap-4'>
+  <img
+    src={Astro.props.iconSrc}
+    alt='shield'
+    class='p-2 size-13 bg-white/50 rounded-lg shadow-sm'
+  />
+  <div>
+    <h3 class='font-bold text-lg'>
+      {Astro.props.title}
+    </h3>
+    <p class='text-balance mt-0 text-gray-700'>
+      <slot />
+    </p>
+  </div>
+</div>

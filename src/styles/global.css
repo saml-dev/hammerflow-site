@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-soft-yellow: hsl(57, 85%, 95%);
+}
+
+h2 {
+  @apply text-xl md:text-2xl font-medium md:text-balance;
+}
+
+pre {
+  @apply rounded-lg p-4 text-sm md:text-base overflow-x-scroll;
+}
+
+code:not(pre *) {
+  @apply rounded-sm px-1 py-0.5;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+a[target='_blank'] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+a[target='_blank']::after {
+  content: '';
+  background-image: url('external_link.svg');
+  background-size: 1em;
+  width: 1em;
+  height: 1em;
+  margin-left: 4px;
+}
+
+a {
+  @apply underline hover:decoration-2!;
+}
