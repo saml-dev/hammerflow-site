@@ -1,8 +1,8 @@
 <script lang="ts">
   import { tick } from 'svelte';
-  import Keys from './Keys.svelte';
   import { fade, fly } from 'svelte/transition';
   import { quartOut } from 'svelte/easing';
+  import Key from './Key.svelte';
 
   let { actions }: { actions: [string, KeyBindingAction][] } = $props();
 
@@ -38,7 +38,11 @@
   class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2"
 >
   <div class=" md:w-60 h-15 flex justify-center md:justify-end">
-    <Keys keys={currentKeys} />
+    <div class="flex gap-x-3">
+      {#each currentKeys as key, i (key)}
+        <Key idx={i}>{key}</Key>
+      {/each}
+    </div>
   </div>
   <div
     class="h-1.5 overflow-hidden rounded-full bg-white w-24 text-white inset-shadow-sm inset-shadow-[#eef2db]"
