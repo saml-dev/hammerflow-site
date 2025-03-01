@@ -93,7 +93,6 @@ let actions: [string, KeyBindingAction][] = [
     },
   ],
 ];
-const rand = Math.floor(Math.random() * actions.length);
 ---
 
 <Layout>
@@ -112,7 +111,6 @@ const rand = Math.floor(Math.random() * actions.length);
       <RotatingActions
         client:load
         {actions}
-        startIdx={rand}
       />
     </div>
     <div class='mt-25 w-full'>
