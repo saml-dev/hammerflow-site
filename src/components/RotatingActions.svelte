@@ -89,4 +89,18 @@
       >
     {/if}
   </div>
+
+  <!-- 
+   this is here to load all the images on page load instead of when 
+   they appear in the rotation to avoid pop in. 
+   -->
+  {#each actions as action}
+    {#if action[1].icon}
+      <img
+        src={action[1].icon}
+        alt={action[1].label}
+        hidden
+      />
+    {/if}
+  {/each}
 </div>
