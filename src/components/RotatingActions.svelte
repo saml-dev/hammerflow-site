@@ -4,18 +4,16 @@
   import { fade, fly } from 'svelte/transition';
   import { quartOut } from 'svelte/easing';
 
-  let {
-    actions,
-    startIdx,
-  }: { actions: [string, KeyBindingAction][]; startIdx: number } = $props();
+  let { actions }: { actions: [string, KeyBindingAction][] } = $props();
 
-  let idx: number | undefined = $state(startIdx);
+  let idx: number | undefined = $state(undefined);
   let currentKeys = $derived(
     idx !== undefined ? actions[idx][0].split(' ') : [],
   );
   let currentAction: KeyBindingAction | undefined = $derived(
     idx !== undefined ? actions[idx][1] : undefined,
   );
+  const ANIMATION_DURATION = 4000;
 
   async function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -27,13 +25,12 @@
     await tick();
     await sleep(700);
     idx = ((prev || 0) + 1) % actions.length;
-    setTimeout(nextAction, 4000);
+    setTimeout(nextAction, ANIMATION_DURATION);
   }
 
   $effect(() => {
-    // first render has shorter timeout because it doesn't animate in.
-    // with the same duration it feels much longer than the others.
-    setTimeout(nextAction, 3000);
+    idx = Math.floor(Math.random() * actions.length);
+    setTimeout(nextAction, ANIMATION_DURATION);
   });
 </script>
 
@@ -89,4 +86,18 @@
       >
     {/if}
   </div>
+
+  <!-- 
+   this is here to load all the images on page load instead of when 
+   they appear in the rotation to avoid pop in. 
+   -->
+  {#each actions as action}
+    {#if action[1].icon}
+      <img
+        src={action[1].icon}
+        alt={action[1].label}
+        hidden
+      />
+    {/if}
+  {/each}
 </div>

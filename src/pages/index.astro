@@ -9,7 +9,7 @@ import { shortExampleToml } from '../lib/constants';
 import vscodeLogo from '../assets/vscode.svg';
 import github from '../assets/github.svg';
 import window from '../assets/window.svg';
-import terminal from '../assets/terminal.png';
+import terminal from '../assets/terminal.webp';
 import globe from '../assets/globe.svg';
 
 let actions: [string, KeyBindingAction][] = [
@@ -93,7 +93,6 @@ let actions: [string, KeyBindingAction][] = [
     },
   ],
 ];
-const rand = Math.floor(Math.random() * actions.length);
 ---
 
 <Layout>
@@ -112,7 +111,6 @@ const rand = Math.floor(Math.random() * actions.length);
       <RotatingActions
         client:load
         {actions}
-        startIdx={rand}
       />
     </div>
     <div class='mt-25 w-full'>
