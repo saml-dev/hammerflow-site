@@ -1,9 +1,8 @@
 <script lang="ts">
   import { tick } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
-  import { quartOut } from 'svelte/easing';
   import Key from './Key.svelte';
   import { animate, stagger } from 'motion';
+  import { slideIn, fadeOut } from '../lib/utils';
 
   let { actions }: { actions: [string, KeyBindingAction][] } = $props();
 
@@ -21,21 +20,14 @@
   }
 
   async function nextAction2() {
-    // fade out
-    await animate(
-      document.querySelectorAll('.animated'),
-      { opacity: 0 },
-      { duration: 0.5 },
-    );
-    // change visible action
+    await fadeOut('.animated');
+
+    // change visible action, await tick so DOM updates
     idx = ((idx || 0) + 1) % actions.length;
     await tick();
-    // slide/fade in
-    await animate(
-      document.querySelectorAll('.animated'),
-      { opacity: [0, 1], y: [-10, 0] },
-      { duration: 0.3, delay: stagger(0.1) },
-    );
+
+    await slideIn('.animated-key');
+    await slideIn('.animated-action');
     setTimeout(nextAction2, ANIMATION_DURATION);
   }
 
@@ -43,21 +35,8 @@
     idx = Math.floor(Math.random() * actions.length);
     await tick();
     await slideIn('.animated-key');
-
-    await sleep(200);
-
-    await slideIn('.animated');
-
+    await slideIn('.animated-action');
     setTimeout(nextAction2, ANIMATION_DURATION);
-  }
-
-  function slideIn(selector: string) {
-    const elems = document.querySelectorAll(selector);
-    return animate(
-      elems,
-      { opacity: [0, 1], y: [-10, 0] },
-      { duration: 0.3, delay: stagger(0.1), ease: 'easeOut' },
-    );
   }
 
   $effect(() => {
@@ -70,8 +49,8 @@
 >
   <div class="md:w-60 h-15 flex justify-center md:justify-end">
     <div class="flex gap-x-3">
-      {#each currentKeys as key, i}
-        <Key idx={i}>{key}</Key>
+      {#each currentKeys as key (key)}
+        <Key>{key}</Key>
       {/each}
     </div>
   </div>
@@ -80,7 +59,7 @@
   >
     {#if currentAction}
       <div
-        class="animated translate-x-26 bg-green-400/50 size-3 blur-xs rounded-full"
+        class="animated-green-dot translate-x-26 bg-green-400/50 size-3 blur-xs rounded-full"
       ></div>
     {/if}
   </div>
@@ -89,12 +68,14 @@
   >
     {#if currentAction?.action}
       <p
-        class="animated opacity-0 text-sm text-gray-600 absolute top-1.5 left-3"
+        class="animated animated-action opacity-0 text-sm text-gray-600 absolute top-1.5 left-3"
       >
         {currentAction?.action}
       </p>
     {/if}
-    <div class="animated opacity-0 flex items-center justify-center gap-3">
+    <div
+      class="animated animated-action opacity-0 flex items-center justify-center gap-3"
+    >
       {#if currentAction?.icon}
         <img
           src={currentAction.icon}
