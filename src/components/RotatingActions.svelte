@@ -32,6 +32,7 @@
   }
 
   async function mount() {
+    await sleep(500);
     idx = Math.floor(Math.random() * actions.length);
     await tick();
     await slideIn('.animated-key');
