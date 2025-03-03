@@ -60,7 +60,7 @@
   >
     {#if currentAction}
       <div
-        class="animated-green-dot translate-x-26 bg-green-400/50 size-3 blur-xs rounded-full"
+        class="animated-green-dot translate-x-26 bg-green-400/50 size-3 rounded-full"
       ></div>
     {/if}
   </div>

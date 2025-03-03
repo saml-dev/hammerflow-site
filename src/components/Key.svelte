@@ -3,7 +3,7 @@
 </script>
 
 <kbd
-  class="animated animated-key will-change-transform px-5 py-3 text-lg font-medium font-mono text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer select-none"
+  class="animated animated-key px-5 py-3 text-lg font-medium font-mono text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer select-none"
 >
   {@render children()}
 </kbd>
