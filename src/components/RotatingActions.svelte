@@ -39,7 +39,7 @@
 >
   <div class=" md:w-60 h-15 flex justify-center md:justify-end">
     <div class="flex gap-x-3">
-      {#each currentKeys as key, i (key)}
+      {#each currentKeys as key, i}
         <Key idx={i}>{key}</Key>
       {/each}
     </div>
