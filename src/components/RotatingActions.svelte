@@ -1,8 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte';
   import Key from './Key.svelte';
-  import { animate, stagger } from 'motion';
-  import { slideIn, fadeOut } from '../lib/utils';
+  import { slideIn, fadeOut, flingDot } from '../lib/utils';
 
   let { actions }: { actions: [string, KeyBindingAction][] } = $props();
 
@@ -13,7 +12,7 @@
   let currentAction: KeyBindingAction | undefined = $derived(
     idx !== undefined ? actions[idx][1] : undefined,
   );
-  const ANIMATION_DURATION = 4000;
+  const ANIMATION_PAUSE = 3000;
 
   async function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -26,18 +25,27 @@
     idx = ((idx || 0) + 1) % actions.length;
     await tick();
 
-    await slideIn('.animated-key');
-    await slideIn('.animated-action');
-    setTimeout(nextAction2, ANIMATION_DURATION);
+    await animateActionIn();
+    setTimeout(nextAction2, ANIMATION_PAUSE);
   }
 
   async function mount() {
+    // wait a bit before starting first animation so
+    // user doesn't miss it.
     await sleep(500);
+
+    // mount random action first.
     idx = Math.floor(Math.random() * actions.length);
     await tick();
+
+    await animateActionIn();
+    setTimeout(nextAction2, ANIMATION_PAUSE);
+  }
+
+  async function animateActionIn() {
     await slideIn('.animated-key');
+    await flingDot();
     await slideIn('.animated-action');
-    setTimeout(nextAction2, ANIMATION_DURATION);
   }
 
   $effect(() => {
@@ -56,13 +64,11 @@
     </div>
   </div>
   <div
-    class="h-1.5 overflow-hidden rounded-full bg-white w-24 text-white inset-shadow-sm inset-shadow-[#eef2db]"
+    class="h-2 overflow-hidden rounded-full bg-white w-24 text-white inset-shadow-sm inset-shadow-[#eef2db]"
   >
-    {#if currentAction}
-      <div
-        class="animated-green-dot translate-x-26 bg-green-400/50 size-3 rounded-full"
-      ></div>
-    {/if}
+    <div
+      class="animated-green-dot -translate-x-full bg-green-400/50 size-3 rounded-full"
+    ></div>
   </div>
   <div
     class="bg-white rounded-lg p-2 w-80 max-w-[96vw] h-36 shadow grid place-items-center relative"
