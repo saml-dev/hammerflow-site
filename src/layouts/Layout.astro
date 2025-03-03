@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import background from '../assets/bg.jpg';
+import background from '../assets/bg.webp';
 ---
 
 <!doctype html>
@@ -21,8 +21,10 @@ import background from '../assets/bg.jpg';
     />
     <title>HammerFlow</title>
   </head>
-  <body class='max-w-5xl mb-40 px-4 md:px-8 mx-auto text-gray-900'>
-    <slot />
+  <body class='text-gray-900'>
+    <div class='max-w-5xl pb-40 px-4 md:px-8 mx-auto'>
+      <slot />
+    </div>
     <img
       id='background'
       src={background.src}
@@ -40,11 +42,10 @@ import background from '../assets/bg.jpg';
 
   #background {
     position: absolute;
-    top: -300px;
-    left: 0;
+    inset: 0;
+    opacity: 80%;
     width: 100%;
     height: 100%;
     z-index: -1;
-    filter: blur(100px);
   }
 </style>

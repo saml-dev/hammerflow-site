@@ -5,9 +5,7 @@
 
 <div>
   <h2>Quick Start</h2>
-  <div
-    class="mt-3 bg-white/20 backdrop-blur-3xl rounded-lg shadow-sm border border-gray-800/10"
-  >
+  <div class="mt-3 bg-white/20 rounded-lg shadow-sm border border-gray-800/10">
     <div class="w-full grid grid-cols-2">
       <button
         class={{
