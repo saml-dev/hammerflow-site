@@ -9,7 +9,7 @@
     <div class="w-full grid grid-cols-2">
       <button
         class={{
-          'py-3 px-1 rounded-tl-lg text-sm md:text-base text-balance': true,
+          'py-3 px-5 rounded-tl-lg text-sm md:text-base text-balance': true,
           'border-b border-b-gray-200': !firstTab,
           'bg-soft-yellow': firstTab,
         }}
@@ -19,7 +19,7 @@
       </button>
       <button
         class={{
-          'py-3 px-1 rounded-tr-lg text-sm md:text-base text-balance': true,
+          'py-3 px-5 rounded-tr-lg text-sm md:text-base text-balance': true,
           'border-b border-b-gray-200': firstTab,
           'bg-soft-yellow': !firstTab,
         }}
