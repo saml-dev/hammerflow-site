@@ -126,7 +126,7 @@ let actions: [string, KeyBindingAction][] = [
           class='rounded-lg pt-12! text-sm overflow-x-scroll md:pt-4! md:text-base'
         />
         <div
-          class='absolute text-sm md:text-base top-0.25 right-0.25 bg-yellow-50 border p-1 md:p-2 rounded-bl-lg rounded-tr-lg flex items-center gap-1 underline hover:decoration-2'
+          class='absolute text-sm md:text-base top-0.25 right-0.25 bg-soft-yellow border p-1 md:p-2 rounded-bl-lg rounded-tr-lg flex items-center gap-1 underline hover:decoration-2'
         >
           <a href='/docs'>See the full example &rarr;</a>
         </div>
@@ -140,12 +140,12 @@ let actions: [string, KeyBindingAction][] = [
         >
           <div>
             <p>
-              1. Clone this repo to the default Hammerspoon config location:
+              1. Clone Hammerflow to the default Hammerspoon config location:
             </p>
             <Code
               theme='dark-plus'
               lang='bash'
-              code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon'
+              code='git clone --recursive https://github.com/saml-dev/hammerflow-wrapper.git ~/.hammerspoon'
               class='mt-1'
             />
           </div>
@@ -196,30 +196,43 @@ let actions: [string, KeyBindingAction][] = [
           class='flex flex-col gap-y-4'
         >
           <div>
-            <p>
-              1. Clone this repo to a subdirectory in your hammerspoon config:
-            </p>
+            <p>1. Clone the Hammerflow spoon:</p>
             <Code
               theme='dark-plus'
               lang='bash'
-              code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon/hammerflow'
+              code='git clone https://github.com/saml-dev/hammerflow.git ~/.hammerspoon/Spoons/Hammerflow.spoon'
               class='mt-1'
             />
           </div>
           <div class='mt-1'>
             <p>
-              2. Add these lines to the top of your <Code
+              2. In <Code
                 theme='dark-plus'
                 code='init.lua'
                 inline
-              />:
+              /> load Hammerflow and pass a list of config files for it to search
+              for. It takes absolute paths and paths relative to the Hammerspoon
+              config dir, usually <Code
+                theme='dark-plus'
+                code='~/.hammerspoon'
+                inline
+              />
             </p>
             <Code
               theme='dark-plus'
               lang='lua'
-              code=`-- allows hammerspoon to find Spoons inside hammerflow
-package.path = package.path .. ";" .. hs.configdir .. "/hammerflow/Spoons/?.spoon/init.lua"
-require('hammerflow/init')`
+              code=`hs.loadSpoon("Hammerflow")
+spoon.Hammerflow.loadFirstValidTomlFile({
+    "home.toml",
+    "work.toml",
+    "Spoons/Hammerflow.spoon/sample.toml"
+})
+-- optionally respect auto_reload setting in the toml config.
+if spoon.Hammerflow.auto_reload then
+    hs.loadSpoon("ReloadConfiguration")
+    spoon.ReloadConfiguration:start()
+end
+`
               class='mt-1'
             />
           </div>
@@ -246,15 +259,8 @@ require('hammerflow/init')`
             /> to see what you can do and try out some of the default actions.
           </p>
           <p>
-            5. Create <Code
-              theme='dark-plus'
-              code='home.toml'
-              inline
-            /> or <Code
-              theme='dark-plus'
-              code='work.toml'
-              inline
-            /> and personalize to your hearts content!
+            5. Create your own toml config and personalize to your hearts
+            content!
           </p>
         </div>
       </QuickStart>
