@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import background from '../assets/bg.webp';
+import github from '../assets/github.svg';
 ---
 
 <!doctype html>
@@ -22,6 +23,22 @@ import background from '../assets/bg.webp';
     <title>HammerFlow</title>
   </head>
   <body class='text-gray-900'>
+    <nav class='pt-2'>
+      <div
+        class='text-lg md:text-xl font-medium max-w-5xl px-4 md:px-8 mx-auto flex items-baseline justify-between'
+      >
+        <a href='/'>Hammerflow</a>
+        <a
+          target='_blank'
+          href='https://github.com/saml-dev/Hammerflow.spoon.git'
+          ><img
+            class='size-5 mr-1'
+            src={github.src}
+            alt='github logo'
+          /> Github</a
+        >
+      </div>
+    </nav>
     <div class='max-w-5xl pb-40 px-4 md:px-8 mx-auto'>
       <slot />
     </div>
