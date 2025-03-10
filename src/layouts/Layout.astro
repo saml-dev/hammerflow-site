@@ -20,7 +20,7 @@ import github from '../assets/github.svg';
       name='generator'
       content={Astro.generator}
     />
-    <title>HammerFlow</title>
+    <title>{import.meta.env.PROD ? 'Hammerflow' : 'Local Hammerflow'}</title>
   </head>
   <body class='text-gray-900'>
     <nav class='pt-2'>
