@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import background from '../assets/bg.webp';
 import github from '../assets/github.svg';
+import metaImage from '../assets/meta.png';
 ---
 
 <!doctype html>
@@ -14,12 +15,39 @@ import github from '../assets/github.svg';
     />
     <link
       rel='icon'
-      href='https://fav.farm/🛠️'
+      href='https://fav.farm/⚒️'
     />
     <meta
       name='generator'
       content={Astro.generator}
     />
+
+    <!-- Open Graph tags -->
+    <meta
+      property='og:title'
+      content='Hammerflow'
+    />
+    <meta
+      property='og:type'
+      content='website'
+    />
+    <meta
+      property='og:url'
+      content='https://hammerflow.dev/'
+    />
+    <meta
+      property='og:description'
+      content='The most productive way to control your Mac'
+    />
+    <meta
+      property='og:image'
+      content={metaImage.src}
+    />
+    <meta
+      property='og:image:alt'
+      content='Hammerflow'
+    />
+
     <title>{import.meta.env.PROD ? 'Hammerflow' : 'Local Hammerflow'}</title>
   </head>
   <body class='text-gray-900'>
