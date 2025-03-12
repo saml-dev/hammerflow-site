@@ -72,7 +72,7 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
     <title>{import.meta.env.PROD ? 'Hammerflow' : 'Local Hammerflow'}</title>
   </head>
   <body class='text-gray-900'>
-    <nav class='pt-2'>
+    <nav class='pt-4'>
       <div
         class='text-lg md:text-xl font-medium max-w-5xl px-4 md:px-8 mx-auto flex items-baseline justify-between'
       >
@@ -81,11 +81,11 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
           target='_blank'
           href='https://github.com/saml-dev/Hammerflow.spoon.git'
           ><img
-            class='size-5 mr-1'
+            class='size-6'
             src={github.src}
             alt='github logo'
-          /> Github</a
-        >
+          />
+        </a>
       </div>
     </nav>
     <div class='max-w-5xl pb-40 px-4 md:px-8 mx-auto'>

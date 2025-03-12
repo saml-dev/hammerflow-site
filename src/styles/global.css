@@ -20,21 +20,6 @@ button {
   @apply cursor-pointer;
 }
 
-a[target='_blank'] {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-a[target='_blank']::after {
-  content: '';
-  background-image: url('/external_link.svg');
-  background-size: 1em;
-  width: 1em;
-  height: 1em;
-  margin-left: 4px;
-}
-
 a {
   @apply underline hover:decoration-2!;
 }
