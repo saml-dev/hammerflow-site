@@ -3,6 +3,9 @@ import '../styles/global.css';
 import background from '../assets/bg.webp';
 import github from '../assets/github.svg';
 import metaImage from '../assets/meta.png';
+let aSite = Astro.site!;
+aSite.pathname = metaImage.src;
+let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
 ---
 
 <!doctype html>
@@ -41,7 +44,7 @@ import metaImage from '../assets/meta.png';
     />
     <meta
       property='og:image'
-      content={metaImage.src}
+      content={metaImageUrl}
     />
     <meta
       property='og:image:alt'
@@ -63,7 +66,7 @@ import metaImage from '../assets/meta.png';
     />
     <meta
       name='twitter:image'
-      content={metaImage.src}
+      content={metaImageUrl}
     />
 
     <title>{import.meta.env.PROD ? 'Hammerflow' : 'Local Hammerflow'}</title>
