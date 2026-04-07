@@ -9,13 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^7.2.5",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.11",
-    "motion": "^12.27.0",
-    "svelte": "^5.47.0",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "@astrojs/svelte": "^8.0.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.4",
+    "motion": "^12.38.0",
+    "svelte": "^5.55.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2"
   },
   "devDependencies": {
     "tailwindcss-motion": "^1.1.1"
