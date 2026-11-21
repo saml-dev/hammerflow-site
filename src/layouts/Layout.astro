@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import github from '../assets/github.svg';
 import metaImage from '../assets/meta.png';
-import ThemePicker from '../components/ThemePicker.svelte';
 let aSite = Astro.site!;
 aSite.pathname = metaImage.src;
 let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
@@ -70,15 +69,6 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
     />
 
     <title>{import.meta.env.PROD ? 'Hammerflow' : 'Local Hammerflow'}</title>
-    <script is:inline>
-      try {
-        var p = new URLSearchParams(window.location.search).get('theme');
-        var s = localStorage.getItem('hf-theme');
-        var v = ['aurora', 'keycaps', 'patchbay', 'warp'];
-        var t = (p && v.indexOf(p) !== -1) ? p : (s && v.indexOf(s) !== -1) ? s : 'aurora';
-        document.documentElement.dataset.hfTheme = t;
-      } catch (e) {}
-    </script>
   </head>
   <body class='text-gray-900'>
     <nav class='pt-4'>
@@ -113,7 +103,6 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
       <div class='hf-grain'></div>
       <div class='hf-grain-fine'></div>
     </div>
-    <ThemePicker client:load />
   </body>
 </html>
 
@@ -121,7 +110,6 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
   body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     position: relative;
-    transition: color 0.25s ease;
   }
 
   #background {
@@ -132,12 +120,6 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
     pointer-events: none;
     background: #fcfbf8;
     isolation: isolate;
-  }
-
-  :global(html[data-hf-theme='keycaps']) #background,
-  :global(html[data-hf-theme='patchbay']) #background,
-  :global(html[data-hf-theme='warp']) #background {
-    display: none;
   }
 
   .hf-orb {
@@ -225,172 +207,56 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
   }
 
   @keyframes hf-drift-1 {
-    0% { transform: translate3d(0%, 0%, 0) scale(1); }
-    50% { transform: translate3d(12%, 10%, 0) scale(1.08); }
-    100% { transform: translate3d(4%, 18%, 0) scale(0.96); }
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(12%, 10%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(4%, 18%, 0) scale(0.96);
+    }
   }
 
   @keyframes hf-drift-2 {
-    0% { transform: translate3d(0%, 0%, 0) scale(1.04); }
-    50% { transform: translate3d(-14%, 8%, 0) scale(0.95); }
-    100% { transform: translate3d(-6%, 16%, 0) scale(1.09); }
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1.04);
+    }
+    50% {
+      transform: translate3d(-14%, 8%, 0) scale(0.95);
+    }
+    100% {
+      transform: translate3d(-6%, 16%, 0) scale(1.09);
+    }
   }
 
   @keyframes hf-drift-3 {
-    0% { transform: translate3d(0%, 0%, 0) scale(1); }
-    50% { transform: translate3d(14%, -12%, 0) scale(1.1); }
-    100% { transform: translate3d(22%, -4%, 0) scale(0.98); }
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(14%, -12%, 0) scale(1.1);
+    }
+    100% {
+      transform: translate3d(22%, -4%, 0) scale(0.98);
+    }
   }
 
   @keyframes hf-drift-4 {
-    0% { transform: translate3d(0%, 0%, 0) scale(1.02); }
-    50% { transform: translate3d(-12%, -10%, 0) scale(1.1); }
-    100% { transform: translate3d(-18%, 4%, 0) scale(0.95); }
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1.02);
+    }
+    50% {
+      transform: translate3d(-12%, -10%, 0) scale(1.1);
+    }
+    100% {
+      transform: translate3d(-18%, 4%, 0) scale(0.95);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .hf-orb {
       animation: none;
     }
-  }
-
-  /* =========================================================================
-     THEME 1: KEYCAP MATRIX — subtle frosted readability lift
-     ========================================================================= */
-  :global(html[data-hf-theme='keycaps'] .bg-soft-yellow) {
-    background-color: rgba(255, 255, 245, 0.9);
-    backdrop-filter: blur(10px);
-  }
-
-  /* =========================================================================
-     THEME 2: PATCHBAY LAB — Teenage Engineering / Braun Industrial Styling
-     ========================================================================= */
-  :global(html[data-hf-theme='patchbay'] body) {
-    color: #18181b;
-  }
-
-  :global(html[data-hf-theme='patchbay'] h1) {
-    letter-spacing: -0.035em;
-  }
-
-  :global(html[data-hf-theme='patchbay'] nav a:first-child) {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  :global(html[data-hf-theme='patchbay'] a) {
-    text-decoration-color: #ff4d00;
-  }
-
-  :global(html[data-hf-theme='patchbay'] kbd) {
-    background: #faf9f5 !important;
-    border: 1.5px solid #18181b !important;
-    border-radius: 5px !important;
-    box-shadow: 0 3px 0 0 #18181b !important;
-  }
-
-  :global(html[data-hf-theme='patchbay'] kbd:hover) {
-    border-color: #ff4d00 !important;
-    box-shadow: 0 5px 0 0 #ff4d00 !important;
-  }
-
-  :global(html[data-hf-theme='patchbay'] .bg-soft-yellow) {
-    background-color: rgba(248, 247, 243, 0.92);
-    backdrop-filter: blur(8px);
-    border-color: rgba(24, 24, 27, 0.25);
-  }
-
-  :global(html[data-hf-theme='patchbay'] .shadow),
-  :global(html[data-hf-theme='patchbay'] .shadow-sm) {
-    border: 1.5px solid rgba(24, 24, 27, 0.2);
-    box-shadow: 3px 3px 0 rgba(24, 24, 27, 0.1);
-  }
-
-  /* =========================================================================
-     THEME 3: WARP DRIVE — Full Dark-Mode Neon Hyperdrive Transformation
-     ========================================================================= */
-  :global(html[data-hf-theme='warp'] body) {
-    color: #f1f5f9;
-  }
-
-  :global(html[data-hf-theme='warp'] h1) {
-    color: #ffffff;
-    text-shadow: 0 0 32px rgba(56, 189, 248, 0.3);
-  }
-
-  :global(html[data-hf-theme='warp'] a) {
-    color: #7dd3fc;
-  }
-
-  :global(html[data-hf-theme='warp'] nav a) {
-    color: #f8fafc;
-  }
-
-  :global(html[data-hf-theme='warp'] nav img) {
-    filter: invert(1);
-  }
-
-  :global(html[data-hf-theme='warp'] .text-gray-700),
-  :global(html[data-hf-theme='warp'] .text-gray-600) {
-    color: #94a3b8;
-  }
-
-  :global(html[data-hf-theme='warp'] img.bg-white\/50) {
-    background-color: rgba(224, 242, 254, 0.92);
-    box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
-  }
-
-  :global(html[data-hf-theme='warp'] kbd) {
-    background: #12152a !important;
-    color: #f8fafc !important;
-    border-color: rgba(56, 189, 248, 0.5) !important;
-    box-shadow:
-      0 3px 0 0 rgba(56, 189, 248, 0.4),
-      0 0 18px rgba(56, 189, 248, 0.18) !important;
-  }
-
-  :global(html[data-hf-theme='warp'] kbd:hover) {
-    border-color: rgba(168, 85, 247, 0.75) !important;
-    box-shadow:
-      0 5px 0 0 rgba(168, 85, 247, 0.5),
-      0 0 24px rgba(168, 85, 247, 0.3) !important;
-  }
-
-  :global(html[data-hf-theme='warp'] .bg-white) {
-    background-color: rgba(15, 20, 40, 0.8);
-    border: 1px solid rgba(168, 85, 247, 0.32);
-    color: #f8fafc;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 0 28px rgba(139, 92, 246, 0.18);
-  }
-
-  :global(html[data-hf-theme='warp'] .animated-action img) {
-    background: rgba(248, 250, 252, 0.92);
-    padding: 4px;
-    border-radius: 8px;
-  }
-
-  :global(html[data-hf-theme='warp'] .bg-white\/20) {
-    background-color: rgba(15, 20, 40, 0.5);
-    border-color: rgba(56, 189, 248, 0.28);
-  }
-
-  :global(html[data-hf-theme='warp'] .bg-soft-yellow) {
-    background-color: rgba(15, 20, 40, 0.84);
-    color: #e2e8f0;
-    border-color: rgba(56, 189, 248, 0.25);
-    backdrop-filter: blur(14px);
-  }
-
-  :global(html[data-hf-theme='warp'] .border-b-gray-200) {
-    border-bottom-color: rgba(148, 163, 184, 0.2);
-  }
-
-  :global(html[data-hf-theme='warp'] pre.astro-code) {
-    border: 1px solid rgba(56, 189, 248, 0.22);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   }
 </style>
