@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import background from '../assets/bg.webp';
 import github from '../assets/github.svg';
 import metaImage from '../assets/meta.png';
 let aSite = Astro.site!;
@@ -91,12 +90,19 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
     <div class='max-w-5xl pb-40 px-4 md:px-8 mx-auto'>
       <slot />
     </div>
-    <img
+    <div
       id='background'
-      src={background.src}
-      alt=''
-      fetchpriority='high'
-    />
+      aria-hidden='true'
+    >
+      <div class='hf-orb hf-orb-1'></div>
+      <div class='hf-orb hf-orb-2'></div>
+      <div class='hf-orb hf-orb-3'></div>
+      <div class='hf-orb hf-orb-4'></div>
+      <div class='hf-veil'></div>
+      <div class='hf-grid'></div>
+      <div class='hf-grain'></div>
+      <div class='hf-grain-fine'></div>
+    </div>
   </body>
 </html>
 
@@ -107,11 +113,150 @@ let metaImageUrl = import.meta.env.PROD ? aSite.toString() : metaImage.src;
   }
 
   #background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background: #fcfbf8;
+    isolation: isolate;
+  }
+
+  .hf-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(72px);
+    mix-blend-mode: multiply;
+    opacity: 0.88;
+    will-change: transform;
+  }
+
+  .hf-orb-1 {
+    width: max(60vw, 480px);
+    height: max(74vh, 480px);
+    top: -22%;
+    left: -12%;
+    background: radial-gradient(circle at 45% 45%, #c4b5fd 0%, #e9d5ff 48%, transparent 72%);
+    animation: hf-drift-1 18s ease-in-out infinite alternate;
+  }
+
+  .hf-orb-2 {
+    width: max(62vw, 500px);
+    height: max(74vh, 500px);
+    top: -22%;
+    right: -12%;
+    background: radial-gradient(circle at 50% 45%, #fcd34d 0%, #fed7aa 48%, transparent 72%);
+    animation: hf-drift-2 21s ease-in-out infinite alternate;
+  }
+
+  .hf-orb-3 {
+    width: max(60vw, 480px);
+    height: max(74vh, 480px);
+    bottom: -16%;
+    left: -4%;
+    background: radial-gradient(circle at 50% 50%, #5eead4 0%, #bbf7d0 48%, transparent 72%);
+    animation: hf-drift-3 24s ease-in-out infinite alternate;
+  }
+
+  .hf-orb-4 {
+    width: max(58vw, 460px);
+    height: max(72vh, 460px);
+    bottom: -14%;
+    right: -4%;
+    background: radial-gradient(circle at 50% 50%, #7dd3fc 0%, #f9a8d4 52%, transparent 74%);
+    animation: hf-drift-4 19s ease-in-out infinite alternate;
+  }
+
+  .hf-veil {
     position: absolute;
     inset: 0;
-    opacity: 80%;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    background: radial-gradient(
+      ellipse 68% 58% at 50% 46%,
+      rgba(255, 254, 250, 0.3) 0%,
+      rgba(255, 254, 250, 0.04) 100%
+    );
+  }
+
+  .hf-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(17, 24, 39, 0.14) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.42;
+    -webkit-mask-image: radial-gradient(ellipse 82% 78% at 50% 44%, #000 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse 82% 78% at 50% 44%, #000 20%, transparent 100%);
+  }
+
+  /* Tactile monochrome film grain — dual-pass for crisp texture on both pastels and near-white */
+  .hf-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.38;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.2' intercept='-0.6'/%3E%3CfeFuncG type='linear' slope='2.2' intercept='-0.6'/%3E%3CfeFuncB type='linear' slope='2.2' intercept='-0.6'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  .hf-grain-fine {
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.4' intercept='-0.55'/%3E%3CfeFuncG type='linear' slope='2.4' intercept='-0.55'/%3E%3CfeFuncB type='linear' slope='2.4' intercept='-0.55'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+  }
+
+  @keyframes hf-drift-1 {
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(12%, 10%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(4%, 18%, 0) scale(0.96);
+    }
+  }
+
+  @keyframes hf-drift-2 {
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1.04);
+    }
+    50% {
+      transform: translate3d(-14%, 8%, 0) scale(0.95);
+    }
+    100% {
+      transform: translate3d(-6%, 16%, 0) scale(1.09);
+    }
+  }
+
+  @keyframes hf-drift-3 {
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(14%, -12%, 0) scale(1.1);
+    }
+    100% {
+      transform: translate3d(22%, -4%, 0) scale(0.98);
+    }
+  }
+
+  @keyframes hf-drift-4 {
+    0% {
+      transform: translate3d(0%, 0%, 0) scale(1.02);
+    }
+    50% {
+      transform: translate3d(-12%, -10%, 0) scale(1.1);
+    }
+    100% {
+      transform: translate3d(-18%, 4%, 0) scale(0.95);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hf-orb {
+      animation: none;
+    }
   }
 </style>
